@@ -1,0 +1,55 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+foreach ([__DIR__ . '/../vendor/autoload.php', __DIR__ . '/../../../autoload.php', __DIR__ . '/../autoload.php'] as $f) {
+    if (is_file($f)) { require $f; break; }
+}
+
+use PintAE\PintAE;
+
+$usage = <<<TXT
+pint-ae — UAE PINT AE e-invoice toolkit
+
+Usage:
+  pint-ae generate <invoice.json> [out.xml]   Build PINT AE XML from JSON (and validate it)
+  pint-ae validate <invoice.xml> [--json]     Check an XML file against the business rules
+  pint-ae to-json  <invoice.xml>              Convert PINT AE XML to JSON
+  pint-ae totals   <invoice.json>             Show calculated totals and VAT breakdown
+
+Exit code: 0 = valid, 1 = validation errors, 2 = usage / input error
+
+TXT;
+
+[$cmd, $in, $out] = [$argv[1] ?? null, $argv[2] ?? null, $argv[3] ?? null];
+if (!$cmd || !$in || in_array($cmd, ['-h', '--help', 'help'], true)) { fwrite(STDERR, $usage); exit(2); }
+if ($in !== '-' && !is_file($in)) { fwrite(STDERR, "File not found: $in\n"); exit(2); }
+$raw = $in === '-' ? stream_get_contents(STDIN) : file_get_contents($in);
+
+try {
+    switch ($cmd) {
+        case 'generate':
+            $data = json_decode((string) $raw, true, 512, JSON_THROW_ON_ERROR);
+            ['xml' => $xml, 'result' => $res] = PintAE::build($data);
+            if ($out) { file_put_contents($out, $xml); fwrite(STDERR, "Wrote $out\n"); } else { echo $xml; }
+            fwrite(STDERR, (string) $res);
+            exit($res->isValid() ? 0 : 1);
+        case 'validate':
+            $res = PintAE::validate((string) $raw);
+            echo $out === '--json' ? json_encode($res, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE) . "\n" : (string) $res;
+            exit($res->isValid() ? 0 : 1);
+        case 'to-json':
+            echo PintAE::toJson((string) $raw), "\n";
+            exit(0);
+        case 'totals':
+            $c = PintAE::calculate(json_decode((string) $raw, true, 512, JSON_THROW_ON_ERROR));
+            echo json_encode(['totals' => $c['totals'], 'vat_breakdown' => $c['subtotals']], JSON_PRETTY_PRINT), "\n";
+            exit(0);
+        default:
+            fwrite(STDERR, "Unknown command: $cmd\n\n$usage"); exit(2);
+    }
+} catch (Throwable $e) {
+    fwrite(STDERR, 'Error: ' . $e->getMessage() . "\n");
+    exit(2);
+}

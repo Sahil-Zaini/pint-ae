@@ -1,0 +1,106 @@
+{
+  "type": "credit_note",
+  "modifiers": [],
+  "number": "TB-17",
+  "uuid": "4c2a9d17-8e3b-4f61-b0a2-7d5e1c3f9b17",
+  "issue_date": "2026-09-29",
+  "due_date": "2026-10-29",
+  "currency": "AED",
+  "note": "pint-ae example: volume discount credit note",
+  "credit_reason": {
+    "code": "VOLUME_DISCOUNT",
+    "text": "Q3 volume rebate"
+  },
+  "seller": {
+    "name": "Demo UAE Supplier LLC",
+    "trn": "100000000000003",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000000"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-2187345",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Sheikh Zayed Road",
+      "line2": "Business Bay",
+      "city": "Dubai",
+      "postal_code": "00000",
+      "emirate": "DXB",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Accounts Receivable",
+      "phone": "+97145551234",
+      "email": "billing@supplier.example"
+    }
+  },
+  "buyer": {
+    "name": "UAE Buyer LLC",
+    "trn": "100000000000103",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000010"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-8876543",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Corniche Road",
+      "line2": "Al Bateen",
+      "city": "Abu Dhabi",
+      "postal_code": "00000",
+      "emirate": "AUH",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Payables Team",
+      "phone": "+97125551234",
+      "email": "ap@uaebuyer.example"
+    }
+  },
+  "delivery": {
+    "date": "2026-09-29",
+    "address": {
+      "city": "Dubai",
+      "emirate": "DXB",
+      "country": "AE"
+    }
+  },
+  "payment": {
+    "means_code": "30",
+    "payment_id": "TB-17",
+    "iban": "AE070331234567890123456",
+    "account_name": "Demo UAE Supplier LLC",
+    "bic": "CBDAAEAD",
+    "terms": "Net 30 days from invoice date"
+  },
+  "lines": [
+    {
+      "id": "1",
+      "name": "Volume rebate Q3",
+      "description": "Rebate on Q3 purchases",
+      "quantity": 1,
+      "unit_code": "C62",
+      "unit_price": 1000,
+      "category": "S",
+      "rate": 5.0,
+      "item_code": {
+        "id": "83101800",
+        "scheme": "0160"
+      },
+      "classification": {
+        "code": "83101800",
+        "scheme": "HS"
+      }
+    }
+  ],
+  "period": {
+    "start": "2026-07-01",
+    "end": "2026-09-30"
+  }
+}

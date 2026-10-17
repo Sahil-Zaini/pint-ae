@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>pint-ae Launch Board</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column; summary strip → asks (the point of the page) → evidence → launch checklist */
+:root {
+  --bg: #f4f6f5;
+  --panel: #ffffff;
+  --ink: #17201c;
+  --mute: #5d6964;
+  --line: #dde3e0;
+  --accent: #0b6e4f;
+  --accent-soft: #e2f1eb;
+  --warn: #8a5300;
+  --warn-soft: #fbefdc;
+  --bad: #a3271f;
+  --bit-on: #0b6e4f;
+  --bit-off: #e6ebe8;
+  --code: #eef2f0;
+  --f-display: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #111614; --panel: #181f1c; --ink: #e6ece9; --mute: #9aa8a1; --line: #29332f;
+  --accent: #4fd1a1; --accent-soft: #163229; --warn: #f0be6a; --warn-soft: #33281a; --bad: #ff8f86;
+  --bit-on: #4fd1a1; --bit-off: #27302c; --code: #1f2824; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #111614; --panel: #181f1c; --ink: #e6ece9; --mute: #9aa8a1; --line: #29332f;
+  --accent: #4fd1a1; --accent-soft: #163229; --warn: #f0be6a; --warn-soft: #33281a; --bad: #ff8f86;
+  --bit-on: #4fd1a1; --bit-off: #27302c; --code: #1f2824; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.6 var(--f-body); }
+.wrap { max-width: 920px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--f-display); text-wrap: balance; margin: 0; letter-spacing: -0.01em; }
+h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.05; }
+h2 { font-size: 22px; }
+h3 { font-size: 16px; }
+p { margin: 0; }
+.eyebrow { font: 500 12px/1 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.lede { color: var(--mute); max-width: 62ch; font-size: 16px; }
+header { display: grid; gap: 12px; }
+section { display: grid; gap: 16px; min-width: 0; }
+.sub { color: var(--mute); max-width: 65ch; }
+code, .mono { font-family: var(--f-mono); font-size: .88em; }
+code { background: var(--code); padding: 1px 5px; border-radius: 4px; }
+
+/* summary strip */
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+.stat { padding: 16px; display: grid; gap: 4px; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: 0; }
+.stat b { font: 700 28px/1 var(--f-display); font-variant-numeric: tabular-nums; }
+.stat b small { font-size: 16px; color: var(--mute); font-weight: 500; }
+.stat span { font-size: 13px; color: var(--mute); }
+@media (max-width: 640px) { .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { border-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--line); } }
+
+/* asks */
+.asks { display: grid; gap: 12px; counter-reset: ask; }
+.ask { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; }
+.ask-head { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.ask-head h3 { flex: 1 1 260px; }
+.prio { font: 500 11px/1 var(--f-mono); letter-spacing: .06em; text-transform: uppercase; padding: 5px 8px; border-radius: 99px; white-space: nowrap; }
+.prio.high { background: var(--warn-soft); color: var(--warn); }
+.prio.med { background: var(--accent-soft); color: var(--accent); }
+.ask ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.why { font-size: 14px; color: var(--mute); }
+.reply { font-size: 14px; border-top: 1px dashed var(--line); padding-top: 10px; }
+.reply strong { font-weight: 600; }
+
+/* tables */
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { font: 500 12px/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--mute); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.num { font-variant-numeric: tabular-nums; font-family: var(--f-mono); }
+.bits { display: inline-flex; gap: 2px; }
+.bits i { width: 11px; height: 18px; border-radius: 2px; background: var(--bit-off); display: block; }
+.bits i.on { background: var(--bit-on); }
+.pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 99px; white-space: nowrap; }
+.pill.ok { background: var(--accent-soft); color: var(--accent); }
+.pill.warn { background: var(--warn-soft); color: var(--warn); }
+
+/* two-column lists */
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 720px) { .cols { grid-template-columns: 1fr; } }
+.box { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.box ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; font-size: 14px; }
+
+/* checklist */
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.check li { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; display: grid; grid-template-columns: auto 1fr; gap: 12px; align-items: start; }
+.check input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); }
+.check label { cursor: pointer; display: grid; gap: 6px; min-width: 0; }
+.check li.done label > span:first-child { text-decoration: line-through; color: var(--mute); }
+pre { margin: 0; background: var(--code); border-radius: 6px; padding: 10px 12px; overflow-x: auto; font: 13px/1.5 var(--f-mono); }
+.cmd { display: grid; gap: 6px; }
+button.copy { justify-self: start; font: 500 12px/1 var(--f-mono); padding: 7px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); cursor: pointer; }
+button.copy:hover { border-color: var(--accent); color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+footer { font-size: 13px; color: var(--mute); border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Open-source repo · v1.0.0 · final</span>
+    <h1>pint-ae launch board</h1>
+    <p class="lede">The UAE e-invoice toolkit is finished and checked against the official PINT AE rules you sent. It turns an invoice into PINT AE XML, validates it, and reads XML back to JSON. The only step left is pushing it to GitHub.</p>
+  </header>
+
+  <div class="stats" role="list">
+    <div class="stat" role="listitem"><b>0</b><span>errors from the official Schematron</span></div>
+    <div class="stat" role="listitem"><b>130<small>/132</small></b><span>official UAE rules built in</span></div>
+    <div class="stat" role="listitem"><b>30<small>/30</small></b><span>official examples accepted</span></div>
+    <div class="stat" role="listitem"><b>134<small>/134</small></b><span>automated tests green</span></div>
+  </div>
+
+  <section aria-labelledby="decided">
+    <h2 id="decided">Decisions I made</h2>
+    <p class="sub">You said to decide, so these are settled. Each one follows the official resources ZIP.</p>
+    <div class="asks">
+      <article class="ask">
+        <div class="ask-head"><h3>Publishing</h3><span class="prio med">Done</span></div>
+        <ul>
+          <li>Repo <code>sahilzaini2007-pixel/pint-ae</code>, Composer package <code>zainidevelopers/pint-ae</code>, MIT licence, version <code>1.0.0</code>.</li>
+          <li>The 14 examples from your test cases are published with the seller renamed and the Complyance emails removed. The TRNs and IBAN are public dummy values.</li>
+        </ul>
+      </article>
+      <article class="ask">
+        <div class="ask-head"><h3>Your Complyance names are converted to the official codes</h3><span class="prio med">Done</span></div>
+        <ul>
+          <li><code>MONTHLY</code> → <code>MTH</code>, with the full frequency list (<code>DLY</code>, <code>WKY</code>, <code>QTR</code>…).</li>
+          <li><code>GOODS_OR_SERVICES_RETURNED</code> → <code>DL8.61.1.D</code>, <code>CONSIDERATION_ALTERED</code> → <code>DL8.61.1.C</code>, plus the other four reasons.</li>
+          <li><code>ELECTRONIC_DEVICES</code> → <code>DL8.48.8.2</code>, plus gold, oil, gas and hydrocarbons.</li>
+          <li><code>VATEX-AE-ZERO</code> / <code>VATEX-AE-OOS</code> stay as they are. The official examples use <code>VATEX-AE-*</code> codes too, and only exempt (E) lines are tied to the <code>DL8.46.x</code> list.</li>
+        </ul>
+      </article>
+      <article class="ask">
+        <div class="ask-head"><h3>The three open mappings are settled</h3><span class="prio med">Done</span></div>
+        <ul>
+          <li>The Peppol endpoint is the <strong>10-digit TIN</strong>, as in every official example. The examples now use <code>1000000000</code>.</li>
+          <li>The BTAE-20 AED total uses <code>DocumentTypeCode</code> <code>aedtotal-incl-vat</code>, which matches the official files.</li>
+          <li>Margin scheme uses Latin <code>N</code>. The official code list prints a Greek "Ν" by mistake, and the library accepts both.</li>
+        </ul>
+      </article>
+      <article class="ask">
+        <div class="ask-head"><h3>Added because the resources made it possible</h3><span class="prio med">Done</span></div>
+        <ul>
+          <li>Discounts and charges on lines and on the whole invoice, by amount or by percentage.</li>
+          <li>Seller TIN, passport registration with issuing country, and state codes for foreign buyers.</li>
+          <li>A CI job that runs the official Schematron on every push.</li>
+        </ul>
+      </article>
+      <article class="ask">
+        <div class="ask-head"><h3>Optional, later</h3><span class="prio high">Not blocking</span></div>
+        <p>Self-billing (389 / 261) has its own rulebook. If you want it checked in CI too, download <span class="mono">docs.peppol.eu/poac/ae/pint-ae-sb/resources.zip</span> and send it any time.</p>
+      </article>
+    </div>
+  </section>
+
+  <section aria-labelledby="scen">
+    <h2 id="scen">The 17 scenarios</h2>
+    <p class="sub">Every one passes the UBL 2.1 schema and the library's checks. The billing documents also pass the official PINT AE Schematron with zero errors and zero warnings. The bars show the 8 transaction-type flags (BTAE-02).</p>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Scenario</th><th>Type</th><th>Flags</th><th>Total</th><th>Official rules</th></tr></thead>
+        <tbody id="scenarios"></tbody>
+      </table>
+    </div>
+  </section>
+
+<section aria-labelledby="launch">
+    <h2 id="launch">Launch checklist</h2>
+    <p class="sub">Tick these off as you go. Ticks are saved in your browser only.</p>
+    <ul class="check" id="checklist">
+      <li><input type="checkbox" id="c1"><label for="c1"><span>Unzip <code>pint-ae.zip</code> and run the tests (134 should pass)</span>
+        <div class="cmd"><pre>cd pint-ae
+php tests/run.php</pre><button class="copy" type="button">Copy</button></div></label></li>
+      <li><input type="checkbox" id="c2"><label for="c2"><span>Create an empty public repo on GitHub named <code>pint-ae</code> (no README, so nothing conflicts)</span></label></li>
+      <li><input type="checkbox" id="c3"><label for="c3"><span>Push the code</span>
+        <div class="cmd"><pre>git init
+git add .
+git commit -m "pint-ae v1.0.0 — UAE PINT AE e-invoice toolkit"
+git branch -M main
+git remote add origin https://github.com/sahilzaini2007-pixel/pint-ae.git
+git push -u origin main</pre><button class="copy" type="button">Copy</button></div></label></li>
+      <li><input type="checkbox" id="c4"><label for="c4"><span>Add repo topics: <code>uae</code> <code>e-invoicing</code> <code>peppol</code> <code>pint-ae</code> <code>php</code> <code>ubl</code> <code>vat</code> <code>fta</code></span></label></li>
+      <li><input type="checkbox" id="c5"><label for="c5"><span>Create release <code>v1.0.0</code> and paste in the CHANGELOG entry</span></label></li>
+      <li><input type="checkbox" id="c6"><label for="c6"><span>Submit the repo URL at packagist.org so <code>composer require</code> works</span></label></li>
+      <li><input type="checkbox" id="c7"><label for="c7"><span>Optional: upload the folder to a subdomain and link the <code>/demo/</code> playground from the README</span></label></li>
+      <li><input type="checkbox" id="c8"><label for="c8"><span>Share it with UAE dev groups and on LinkedIn ("open-source PINT AE for PHP, Jan 2027 deadline")</span></label></li>
+    </ul>
+  </section>
+
+  <footer>Designed &amp; Developed by Sahil Zaini / Zaini Developers · Powered by YCS Trust · Checked against PINT AE Billing 1.0.4 (PDK 1.4.4) official resources</footer>
+</div>
+
+<script>
+(function () {
+  var rows = [
+    ["Standard tax invoice", "380", "00000000", "AED 525.00", 1],
+    ["Credit note", "381", "00000000", "AED 525.00", 1],
+    ["Self-billed invoice", "389", "00000000", "AED 525.00", 2],
+    ["Self-billed credit note", "261", "00000000", "AED 525.00", 2],
+    ["Export", "380", "00000001", "AED 500.00", 1],
+    ["Out of scope", "480", "00000000", "AED 500.00", 1],
+    ["Free trade zone", "380", "10000000", "AED 500.00", 1],
+    ["Deemed supply", "380", "01000000", "AED 525.00", 1],
+    ["Continuous supply", "380", "00001000", "AED 525.00", 1],
+    ["Disclosed agent", "380", "00000100", "AED 525.00", 1],
+    ["E-commerce", "380", "00000010", "AED 525.00", 1],
+    ["Margin scheme", "380", "00100000", "AED 500.00", 1],
+    ["Summary invoice", "380", "00010000", "AED 787.50", 1],
+    ["Reverse charge", "380", "00000000", "AED 500.00", 1],
+    ["Discounts and charges", "380", "00000000", "AED 13,581.75", 1],
+    ["Foreign currency", "380", "00000000", "USD 210.00", 1],
+    ["Volume-discount credit note", "381", "00000000", "AED 1,050.00", 1]
+  ];
+  var names = ["Free trade zone","Deemed supply","Margin scheme","Summary","Continuous supply","Disclosed agent","E-commerce","Export"];
+  var tb = document.getElementById("scenarios");
+  rows.forEach(function (r) {
+    var bits = r[2].split("").map(function (b, i) {
+      return '<i class="' + (b === "1" ? "on" : "") + '" title="' + names[i] + ": " + (b === "1" ? "yes" : "no") + '"></i>';
+    }).join("");
+    var res = r[4] === 2 ? '<span class="pill warn" title="Self-billing uses the separate PINT AE Self-Billing rulebook">Self-billing rules</span>'
+                         : '<span class="pill ok">0 errors</span>';
+    var tr = document.createElement("tr");
+    tr.innerHTML = "<td>" + r[0] + '</td><td class="num">' + r[1] + '</td><td><span class="bits" aria-label="' + r[2] + '">' + bits +
+      '</span> <span class="mono" style="color:var(--mute);font-size:12px">' + r[2] + '</span></td><td class="num">' + r[3] + "</td><td>" + res + "</td>";
+    tb.appendChild(tr);
+  });
+
+  var KEY = "pintae-launch-v1", saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) {}
+  document.querySelectorAll("#checklist input").forEach(function (cb) {
+    var li = cb.closest("li");
+    cb.checked = !!saved[cb.id]; li.classList.toggle("done", cb.checked);
+    cb.addEventListener("change", function () {
+      saved[cb.id] = cb.checked; li.classList.toggle("done", cb.checked);
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+  document.querySelectorAll("button.copy").forEach(function (btn) {
+    btn.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      var pre = btn.previousElementSibling, text = pre.textContent;
+      var done = function () { btn.textContent = "Copied"; setTimeout(function () { btn.textContent = "Copy"; }, 1500); };
+      var fallback = function () { var r = document.createRange(); r.selectNodeContents(pre); var s = getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected, press Ctrl+C"; };
+      try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

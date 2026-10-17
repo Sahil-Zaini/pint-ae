@@ -1,0 +1,102 @@
+{
+  "type": "invoice",
+  "modifiers": [
+    "out_of_scope"
+  ],
+  "number": "TB-06",
+  "uuid": "6e53b89d-b051-5cff-becf-e25a8153cc91",
+  "issue_date": "2026-09-29",
+  "due_date": "2026-10-29",
+  "currency": "AED",
+  "note": "pint-ae example: out-of-scope",
+  "seller": {
+    "name": "Demo UAE Supplier LLC",
+    "trn": "100000000000003",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000000"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-2187345",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Sheikh Zayed Road",
+      "line2": "Business Bay",
+      "city": "Dubai",
+      "postal_code": "00000",
+      "emirate": "DXB",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Accounts Receivable",
+      "phone": "+97145551234",
+      "email": "billing@supplier.example"
+    }
+  },
+  "buyer": {
+    "name": "UAE Buyer LLC",
+    "trn": "100000000000103",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000010"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-8876543",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Corniche Road",
+      "line2": "Al Bateen",
+      "city": "Abu Dhabi",
+      "postal_code": "00000",
+      "emirate": "AUH",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Payables Team",
+      "phone": "+97125551234",
+      "email": "ap@uaebuyer.example"
+    }
+  },
+  "delivery": {
+    "date": "2026-09-29",
+    "address": {
+      "city": "Dubai",
+      "emirate": "DXB",
+      "country": "AE"
+    }
+  },
+  "payment": {
+    "means_code": "30",
+    "payment_id": "TB-06",
+    "iban": "AE070331234567890123456",
+    "account_name": "Demo UAE Supplier LLC",
+    "bic": "CBDAAEAD",
+    "terms": "Net 30 days from invoice date"
+  },
+  "lines": [
+    {
+      "id": "1",
+      "name": "Out-of-scope service",
+      "description": "Out-of-scope service",
+      "quantity": 2.0,
+      "unit_code": "HUR",
+      "unit_price": 250.0,
+      "category": "O",
+      "rate": 0.0,
+      "exemption_code": "VATEX-AE-OOS",
+      "exemption_reason": "Outside scope of VAT",
+      "item_code": {
+        "id": "83101800",
+        "scheme": "0160"
+      },
+      "classification": {
+        "code": "83101800",
+        "scheme": "HS"
+      }
+    }
+  ]
+}

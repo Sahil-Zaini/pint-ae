@@ -1,0 +1,121 @@
+{
+  "01-standard.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 25.0,
+    "tax_inclusive": 525.0,
+    "payable": 525.0
+  },
+  "02-credit-note.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 25.0,
+    "tax_inclusive": 525.0,
+    "payable": 525.0
+  },
+  "03-self-billed.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 25.0,
+    "tax_inclusive": 525.0,
+    "payable": 525.0
+  },
+  "04-self-billed-credit-note.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 25.0,
+    "tax_inclusive": 525.0,
+    "payable": 525.0
+  },
+  "05-export.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 0.0,
+    "tax_inclusive": 500.0,
+    "payable": 500.0
+  },
+  "06-out-of-scope.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 0.0,
+    "tax_inclusive": 500.0,
+    "payable": 500.0
+  },
+  "07-free-trade-zone.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 0.0,
+    "tax_inclusive": 500.0,
+    "payable": 500.0
+  },
+  "08-deemed-supply.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 25.0,
+    "tax_inclusive": 525.0,
+    "payable": 525.0
+  },
+  "09-continuous-supply.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 25.0,
+    "tax_inclusive": 525.0,
+    "payable": 525.0
+  },
+  "10-disclosed-agent.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 25.0,
+    "tax_inclusive": 525.0,
+    "payable": 525.0
+  },
+  "11-ecommerce.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 25.0,
+    "tax_inclusive": 525.0,
+    "payable": 525.0
+  },
+  "12-margin-scheme.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 0.0,
+    "tax_inclusive": 500.0,
+    "payable": 500.0
+  },
+  "13-summary.json": {
+    "line_extension": 750.0,
+    "tax_exclusive": 750.0,
+    "tax": 37.5,
+    "tax_inclusive": 787.5,
+    "payable": 787.5
+  },
+  "14-reverse-charge.json": {
+    "line_extension": 500.0,
+    "tax_exclusive": 500.0,
+    "tax": 0.0,
+    "tax_inclusive": 500.0,
+    "payable": 500.0
+  },
+  "15-allowances-and-charges.json": {
+    "line_extension": 13060,
+    "tax_exclusive": 12935,
+    "tax": 646.75,
+    "tax_inclusive": 13581.75,
+    "payable": 13581.75
+  },
+  "16-foreign-currency.json": {
+    "line_extension": 200,
+    "tax_exclusive": 200,
+    "tax": 10,
+    "tax_inclusive": 210,
+    "payable": 210
+  },
+  "17-volume-discount-credit-note.json": {
+    "line_extension": 1000,
+    "tax_exclusive": 1000,
+    "tax": 50,
+    "tax_inclusive": 1050,
+    "payable": 1050
+  }
+}

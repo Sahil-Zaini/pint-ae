@@ -1,0 +1,141 @@
+{
+  "type": "invoice",
+  "modifiers": [
+    "summary"
+  ],
+  "number": "TB-13",
+  "uuid": "d40dd5b9-bf85-545d-bc54-662fbc01c6f4",
+  "issue_date": "2026-09-29",
+  "due_date": "2026-10-29",
+  "currency": "AED",
+  "note": "pint-ae example: summary",
+  "period": {
+    "start": "2026-09-01",
+    "end": "2026-09-30",
+    "frequency": "MONTHLY"
+  },
+  "seller": {
+    "name": "Demo UAE Supplier LLC",
+    "trn": "100000000000003",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000000"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-2187345",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Sheikh Zayed Road",
+      "line2": "Business Bay",
+      "city": "Dubai",
+      "postal_code": "00000",
+      "emirate": "DXB",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Accounts Receivable",
+      "phone": "+97145551234",
+      "email": "billing@supplier.example"
+    }
+  },
+  "buyer": {
+    "name": "UAE Buyer LLC",
+    "trn": "100000000000103",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000010"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-8876543",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Corniche Road",
+      "line2": "Al Bateen",
+      "city": "Abu Dhabi",
+      "postal_code": "00000",
+      "emirate": "AUH",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Payables Team",
+      "phone": "+97125551234",
+      "email": "ap@uaebuyer.example"
+    }
+  },
+  "delivery": {
+    "date": "2026-09-29",
+    "address": {
+      "city": "Dubai",
+      "emirate": "DXB",
+      "country": "AE"
+    }
+  },
+  "payment": {
+    "means_code": "30",
+    "payment_id": "TB-13",
+    "iban": "AE070331234567890123456",
+    "account_name": "Demo UAE Supplier LLC",
+    "bic": "CBDAAEAD",
+    "terms": "Net 30 days from invoice date"
+  },
+  "lines": [
+    {
+      "id": "1",
+      "name": "Consulting — week 1",
+      "description": "Consulting — week 1",
+      "quantity": 1.0,
+      "unit_code": "HUR",
+      "unit_price": 250.0,
+      "category": "S",
+      "rate": 5.0,
+      "item_code": {
+        "id": "83101800",
+        "scheme": "0160"
+      },
+      "classification": {
+        "code": "83101800",
+        "scheme": "HS"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Consulting — week 2",
+      "description": "Consulting — week 2",
+      "quantity": 1.0,
+      "unit_code": "HUR",
+      "unit_price": 250.0,
+      "category": "S",
+      "rate": 5.0,
+      "item_code": {
+        "id": "83101800",
+        "scheme": "0160"
+      },
+      "classification": {
+        "code": "83101800",
+        "scheme": "HS"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Consulting — week 3",
+      "description": "Consulting — week 3",
+      "quantity": 1.0,
+      "unit_code": "HUR",
+      "unit_price": 250.0,
+      "category": "S",
+      "rate": 5.0,
+      "item_code": {
+        "id": "83101800",
+        "scheme": "0160"
+      },
+      "classification": {
+        "code": "83101800",
+        "scheme": "HS"
+      }
+    }
+  ]
+}

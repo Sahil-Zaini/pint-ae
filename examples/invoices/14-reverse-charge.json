@@ -1,0 +1,102 @@
+{
+  "type": "invoice",
+  "modifiers": [
+    "reverse_charge"
+  ],
+  "number": "TB-14",
+  "uuid": "a14863db-ece7-5b1e-9903-ce0493461686",
+  "issue_date": "2026-09-29",
+  "due_date": "2026-10-29",
+  "currency": "AED",
+  "note": "pint-ae example: reverse-charge",
+  "seller": {
+    "name": "Demo UAE Supplier LLC",
+    "trn": "100000000000003",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000000"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-2187345",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Sheikh Zayed Road",
+      "line2": "Business Bay",
+      "city": "Dubai",
+      "postal_code": "00000",
+      "emirate": "DXB",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Accounts Receivable",
+      "phone": "+97145551234",
+      "email": "billing@supplier.example"
+    }
+  },
+  "buyer": {
+    "name": "UAE Buyer LLC",
+    "trn": "100000000000103",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000010"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-8876543",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Corniche Road",
+      "line2": "Al Bateen",
+      "city": "Abu Dhabi",
+      "postal_code": "00000",
+      "emirate": "AUH",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Payables Team",
+      "phone": "+97125551234",
+      "email": "ap@uaebuyer.example"
+    }
+  },
+  "delivery": {
+    "date": "2026-09-29",
+    "address": {
+      "city": "Dubai",
+      "emirate": "DXB",
+      "country": "AE"
+    }
+  },
+  "payment": {
+    "means_code": "30",
+    "payment_id": "TB-14",
+    "iban": "AE070331234567890123456",
+    "account_name": "Demo UAE Supplier LLC",
+    "bic": "CBDAAEAD",
+    "terms": "Net 30 days from invoice date"
+  },
+  "lines": [
+    {
+      "id": "1",
+      "name": "Electronic devices supplied under RCM",
+      "description": "Electronic devices supplied under RCM",
+      "quantity": 2.0,
+      "unit_code": "C62",
+      "unit_price": 250.0,
+      "category": "AE",
+      "rate": 0.0,
+      "exemption_reason": "Reverse charge",
+      "item_code": {
+        "id": "83101800",
+        "scheme": "0160"
+      },
+      "classification": {
+        "code": "83101800",
+        "scheme": "HS"
+      },
+      "rcm_type": "ELECTRONIC_DEVICES"
+    }
+  ]
+}

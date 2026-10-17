@@ -1,0 +1,97 @@
+{
+  "type": "invoice",
+  "modifiers": [
+    "export"
+  ],
+  "number": "TB-05",
+  "uuid": "0504fde5-cea4-5176-a837-bbc34fcdf177",
+  "issue_date": "2026-09-29",
+  "due_date": "2026-10-29",
+  "currency": "AED",
+  "note": "pint-ae example: export",
+  "seller": {
+    "name": "Demo UAE Supplier LLC",
+    "trn": "100000000000003",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000000"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-2187345",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Sheikh Zayed Road",
+      "line2": "Business Bay",
+      "city": "Dubai",
+      "postal_code": "00000",
+      "emirate": "DXB",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Accounts Receivable",
+      "phone": "+97145551234",
+      "email": "billing@supplier.example"
+    }
+  },
+  "buyer": {
+    "name": "Global Import Co",
+    "address": {
+      "line1": "12 Marine Drive",
+      "city": "Mumbai",
+      "postal_code": "400020",
+      "emirate": "MH",
+      "country": "IN"
+    },
+    "contact": {
+      "name": "Global Import Co"
+    }
+  },
+  "delivery": {
+    "date": "2026-09-29",
+    "address": {
+      "city": "Dubai",
+      "emirate": "DXB",
+      "country": "AE"
+    },
+    "terms": {
+      "incoterms": "FOB",
+      "customs_declaration": "CUS-TB-0001",
+      "export_date": "2026-09-29",
+      "origin_port": "Jebel Ali",
+      "destination_port": "Mumbai",
+      "transport_mode": "SEA"
+    }
+  },
+  "payment": {
+    "means_code": "30",
+    "payment_id": "TB-05",
+    "iban": "AE070331234567890123456",
+    "account_name": "Demo UAE Supplier LLC",
+    "bic": "CBDAAEAD",
+    "terms": "Net 30 days from invoice date"
+  },
+  "lines": [
+    {
+      "id": "1",
+      "name": "Consulting service",
+      "description": "Consulting service",
+      "quantity": 2.0,
+      "unit_code": "HUR",
+      "unit_price": 250.0,
+      "category": "Z",
+      "rate": 0.0,
+      "exemption_code": "VATEX-AE-ZERO",
+      "exemption_reason": "Zero-rated supply",
+      "item_code": {
+        "id": "83101800",
+        "scheme": "0160"
+      },
+      "classification": {
+        "code": "83101800",
+        "scheme": "HS"
+      }
+    }
+  ]
+}

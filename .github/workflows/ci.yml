@@ -1,0 +1,44 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.1', '8.2', '8.3', '8.4']
+    name: PHP ${{ matrix.php }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, libxml, json
+          coverage: none
+      - name: Lint
+        run: find src bin tests demo -name '*.php' -o -name 'pint-ae' | xargs -n1 php -l
+      - name: Tests (17 scenarios, UBL 2.1 XSD, broken-invoice cases)
+        run: php tests/run.php
+      - name: CLI smoke test
+        run: |
+          php bin/pint-ae generate examples/invoices/01-standard.json /tmp/out.xml
+          php bin/pint-ae validate /tmp/out.xml
+
+  official-schematron:
+    runs-on: ubuntu-latest
+    name: Official PINT AE Schematron
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install saxonche
+      - name: Examples pass the official rules; library accepts the official examples
+        run: python3 tests/official.py

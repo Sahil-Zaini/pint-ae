@@ -1,0 +1,100 @@
+{
+  "type": "invoice",
+  "modifiers": [
+    "deemed_supply"
+  ],
+  "number": "TB-08",
+  "uuid": "916955c0-9dff-559f-a6f0-c36093ffdd16",
+  "issue_date": "2026-09-29",
+  "due_date": "2026-10-29",
+  "currency": "AED",
+  "note": "pint-ae example: deemed-supply",
+  "seller": {
+    "name": "Demo UAE Supplier LLC",
+    "trn": "100000000000003",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000000"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-2187345",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Sheikh Zayed Road",
+      "line2": "Business Bay",
+      "city": "Dubai",
+      "postal_code": "00000",
+      "emirate": "DXB",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Accounts Receivable",
+      "phone": "+97145551234",
+      "email": "billing@supplier.example"
+    }
+  },
+  "buyer": {
+    "name": "UAE Buyer LLC",
+    "trn": "100000000000103",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000010"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-8876543",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Corniche Road",
+      "line2": "Al Bateen",
+      "city": "Abu Dhabi",
+      "postal_code": "00000",
+      "emirate": "AUH",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Payables Team",
+      "phone": "+97125551234",
+      "email": "ap@uaebuyer.example"
+    }
+  },
+  "delivery": {
+    "date": "2026-09-29",
+    "address": {
+      "city": "Dubai",
+      "emirate": "DXB",
+      "country": "AE"
+    }
+  },
+  "payment": {
+    "means_code": "30",
+    "payment_id": "TB-08",
+    "iban": "AE070331234567890123456",
+    "account_name": "Demo UAE Supplier LLC",
+    "bic": "CBDAAEAD",
+    "terms": "Net 30 days from invoice date"
+  },
+  "lines": [
+    {
+      "id": "1",
+      "name": "Consulting service",
+      "description": "Consulting service",
+      "quantity": 2.0,
+      "unit_code": "HUR",
+      "unit_price": 250.0,
+      "category": "S",
+      "rate": 5.0,
+      "item_code": {
+        "id": "83101800",
+        "scheme": "0160"
+      },
+      "classification": {
+        "code": "83101800",
+        "scheme": "HS"
+      }
+    }
+  ]
+}

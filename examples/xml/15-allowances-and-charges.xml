@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:CustomizationID>urn:peppol:pint:billing-1@ae-1</cbc:CustomizationID>
+  <cbc:ProfileID>urn:peppol:bis:billing</cbc:ProfileID>
+  <cbc:ProfileExecutionID>00000000</cbc:ProfileExecutionID>
+  <cbc:ID>TB-15</cbc:ID>
+  <cbc:UUID>6b0e8f0a-1c51-4c5e-9f5d-0b9c2f6f1a15</cbc:UUID>
+  <cbc:IssueDate>2026-09-29</cbc:IssueDate>
+  <cbc:DueDate>2026-10-29</cbc:DueDate>
+  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
+  <cbc:Note>pint-ae example: allowances and charges</cbc:Note>
+  <cbc:DocumentCurrencyCode>AED</cbc:DocumentCurrencyCode>
+  <cac:AdditionalDocumentReference>
+    <cbc:ID>BTAE-20</cbc:ID>
+    <cbc:DocumentTypeCode>aedtotal-incl-vat</cbc:DocumentTypeCode>
+    <cbc:DocumentDescription>13581.75</cbc:DocumentDescription>
+  </cac:AdditionalDocumentReference>
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0235">1000000000</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Sheikh Zayed Road</cbc:StreetName>
+        <cbc:AdditionalStreetName>Business Bay</cbc:AdditionalStreetName>
+        <cbc:CityName>Dubai</cbc:CityName>
+        <cbc:PostalZone>00000</cbc:PostalZone>
+        <cbc:CountrySubentity>DXB</cbc:CountrySubentity>
+        <cac:Country>
+          <cbc:IdentificationCode>AE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>100000000000003</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>Demo UAE Supplier LLC</cbc:RegistrationName>
+        <cbc:CompanyID schemeAgencyID="TL" schemeAgencyName="DED">CN-2187345</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Accounts Receivable</cbc:Name>
+        <cbc:Telephone>+97145551234</cbc:Telephone>
+        <cbc:ElectronicMail>billing@supplier.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cbc:EndpointID schemeID="0235">1000000010</cbc:EndpointID>
+      <cac:PostalAddress>
+        <cbc:StreetName>Corniche Road</cbc:StreetName>
+        <cbc:AdditionalStreetName>Al Bateen</cbc:AdditionalStreetName>
+        <cbc:CityName>Abu Dhabi</cbc:CityName>
+        <cbc:PostalZone>00000</cbc:PostalZone>
+        <cbc:CountrySubentity>AUH</cbc:CountrySubentity>
+        <cac:Country>
+          <cbc:IdentificationCode>AE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:PostalAddress>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>100000000000103</cbc:CompanyID>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:PartyTaxScheme>
+      <cac:PartyLegalEntity>
+        <cbc:RegistrationName>UAE Buyer LLC</cbc:RegistrationName>
+        <cbc:CompanyID schemeAgencyID="TL" schemeAgencyName="DED">CN-8876543</cbc:CompanyID>
+      </cac:PartyLegalEntity>
+      <cac:Contact>
+        <cbc:Name>Payables Team</cbc:Name>
+        <cbc:Telephone>+97125551234</cbc:Telephone>
+        <cbc:ElectronicMail>ap@uaebuyer.example</cbc:ElectronicMail>
+      </cac:Contact>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+  <cac:Delivery>
+    <cbc:ActualDeliveryDate>2026-09-29</cbc:ActualDeliveryDate>
+    <cac:DeliveryLocation>
+      <cac:Address>
+        <cbc:CityName>Dubai</cbc:CityName>
+        <cbc:CountrySubentity>DXB</cbc:CountrySubentity>
+        <cac:Country>
+          <cbc:IdentificationCode>AE</cbc:IdentificationCode>
+        </cac:Country>
+      </cac:Address>
+    </cac:DeliveryLocation>
+  </cac:Delivery>
+  <cac:PaymentMeans>
+    <cbc:PaymentMeansCode name="Credit transfer">30</cbc:PaymentMeansCode>
+    <cbc:PaymentID>TB-15</cbc:PaymentID>
+    <cac:PayeeFinancialAccount>
+      <cbc:ID>AE070331234567890123456</cbc:ID>
+      <cbc:Name>Demo UAE Supplier LLC</cbc:Name>
+      <cac:FinancialInstitutionBranch>
+        <cbc:ID>CBDAAEAD</cbc:ID>
+      </cac:FinancialInstitutionBranch>
+    </cac:PayeeFinancialAccount>
+  </cac:PaymentMeans>
+  <cac:PaymentTerms>
+    <cbc:Note>Net 30 days from invoice date</cbc:Note>
+  </cac:PaymentTerms>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReasonCode>100</cbc:AllowanceChargeReasonCode>
+    <cbc:AllowanceChargeReason>Loyalty rebate</cbc:AllowanceChargeReason>
+    <cbc:Amount currencyID="AED">200.00</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>5</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+  </cac:AllowanceCharge>
+  <cac:AllowanceCharge>
+    <cbc:ChargeIndicator>true</cbc:ChargeIndicator>
+    <cbc:AllowanceChargeReasonCode>DL</cbc:AllowanceChargeReasonCode>
+    <cbc:AllowanceChargeReason>Delivery</cbc:AllowanceChargeReason>
+    <cbc:Amount currencyID="AED">75.00</cbc:Amount>
+    <cac:TaxCategory>
+      <cbc:ID>S</cbc:ID>
+      <cbc:Percent>5</cbc:Percent>
+      <cac:TaxScheme>
+        <cbc:ID>VAT</cbc:ID>
+      </cac:TaxScheme>
+    </cac:TaxCategory>
+  </cac:AllowanceCharge>
+  <cac:TaxTotal>
+    <cbc:TaxAmount currencyID="AED">646.75</cbc:TaxAmount>
+    <cac:TaxSubtotal>
+      <cbc:TaxableAmount currencyID="AED">12935.00</cbc:TaxableAmount>
+      <cbc:TaxAmount currencyID="AED">646.75</cbc:TaxAmount>
+      <cac:TaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:TaxCategory>
+    </cac:TaxSubtotal>
+  </cac:TaxTotal>
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="AED">13060.00</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="AED">12935.00</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="AED">13581.75</cbc:TaxInclusiveAmount>
+    <cbc:AllowanceTotalAmount currencyID="AED">200.00</cbc:AllowanceTotalAmount>
+    <cbc:ChargeTotalAmount currencyID="AED">75.00</cbc:ChargeTotalAmount>
+    <cbc:PayableAmount currencyID="AED">13581.75</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">4</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="AED">12160.00</cbc:LineExtensionAmount>
+    <cac:AllowanceCharge>
+      <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+      <cbc:AllowanceChargeReasonCode>95</cbc:AllowanceChargeReasonCode>
+      <cbc:AllowanceChargeReason>Bulk discount</cbc:AllowanceChargeReason>
+      <cbc:MultiplierFactorNumeric>5</cbc:MultiplierFactorNumeric>
+      <cbc:Amount currencyID="AED">640.00</cbc:Amount>
+      <cbc:BaseAmount currencyID="AED">12800.00</cbc:BaseAmount>
+    </cac:AllowanceCharge>
+    <cac:Item>
+      <cbc:Description>Business laptop 14-inch</cbc:Description>
+      <cbc:Name>Laptop</cbc:Name>
+      <cac:CommodityClassification>
+        <cbc:CommodityCode>G</cbc:CommodityCode>
+        <cbc:ItemClassificationCode listID="HS">84713000</cbc:ItemClassificationCode>
+      </cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="AED">3200</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
+      <cac:AllowanceCharge>
+        <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+        <cbc:Amount currencyID="AED">0</cbc:Amount>
+        <cbc:BaseAmount currencyID="AED">3200</cbc:BaseAmount>
+      </cac:AllowanceCharge>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="AED">12768.00</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="AED">608.00</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="HUR">6</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="AED">900.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Description>On-site installation and setup</cbc:Description>
+      <cbc:Name>Setup service</cbc:Name>
+      <cac:AdditionalItemIdentification>
+        <cbc:ID schemeID="SAC">998313</cbc:ID>
+      </cac:AdditionalItemIdentification>
+      <cac:CommodityClassification>
+        <cbc:CommodityCode>S</cbc:CommodityCode>
+      </cac:CommodityClassification>
+      <cac:ClassifiedTaxCategory>
+        <cbc:ID>S</cbc:ID>
+        <cbc:Percent>5</cbc:Percent>
+        <cac:TaxScheme>
+          <cbc:ID>VAT</cbc:ID>
+        </cac:TaxScheme>
+      </cac:ClassifiedTaxCategory>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="AED">150</cbc:PriceAmount>
+      <cbc:BaseQuantity unitCode="HUR">1</cbc:BaseQuantity>
+      <cac:AllowanceCharge>
+        <cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+        <cbc:Amount currencyID="AED">0</cbc:Amount>
+        <cbc:BaseAmount currencyID="AED">150</cbc:BaseAmount>
+      </cac:AllowanceCharge>
+    </cac:Price>
+    <cac:ItemPriceExtension>
+      <cbc:Amount currencyID="AED">945.00</cbc:Amount>
+      <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="AED">45.00</cbc:TaxAmount>
+      </cac:TaxTotal>
+    </cac:ItemPriceExtension>
+  </cac:InvoiceLine>
+</Invoice>

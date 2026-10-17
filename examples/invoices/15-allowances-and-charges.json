@@ -1,0 +1,131 @@
+{
+  "type": "invoice",
+  "modifiers": [],
+  "number": "TB-15",
+  "uuid": "6b0e8f0a-1c51-4c5e-9f5d-0b9c2f6f1a15",
+  "issue_date": "2026-09-29",
+  "due_date": "2026-10-29",
+  "currency": "AED",
+  "note": "pint-ae example: allowances and charges",
+  "seller": {
+    "name": "Demo UAE Supplier LLC",
+    "trn": "100000000000003",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000000"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-2187345",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Sheikh Zayed Road",
+      "line2": "Business Bay",
+      "city": "Dubai",
+      "postal_code": "00000",
+      "emirate": "DXB",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Accounts Receivable",
+      "phone": "+97145551234",
+      "email": "billing@supplier.example"
+    }
+  },
+  "buyer": {
+    "name": "UAE Buyer LLC",
+    "trn": "100000000000103",
+    "endpoint": {
+      "scheme": "0235",
+      "id": "1000000010"
+    },
+    "registration": {
+      "type": "TL",
+      "id": "CN-8876543",
+      "authority": "DED"
+    },
+    "address": {
+      "line1": "Corniche Road",
+      "line2": "Al Bateen",
+      "city": "Abu Dhabi",
+      "postal_code": "00000",
+      "emirate": "AUH",
+      "country": "AE"
+    },
+    "contact": {
+      "name": "Payables Team",
+      "phone": "+97125551234",
+      "email": "ap@uaebuyer.example"
+    }
+  },
+  "delivery": {
+    "date": "2026-09-29",
+    "address": {
+      "city": "Dubai",
+      "emirate": "DXB",
+      "country": "AE"
+    }
+  },
+  "payment": {
+    "means_code": "30",
+    "payment_id": "TB-15",
+    "iban": "AE070331234567890123456",
+    "account_name": "Demo UAE Supplier LLC",
+    "bic": "CBDAAEAD",
+    "terms": "Net 30 days from invoice date"
+  },
+  "lines": [
+    {
+      "id": "1",
+      "name": "Laptop",
+      "description": "Business laptop 14-inch",
+      "quantity": 4,
+      "unit_code": "C62",
+      "unit_price": 3200,
+      "category": "S",
+      "allowances": [
+        {
+          "percent": 5,
+          "base": 12800,
+          "reason": "Bulk discount",
+          "reason_code": "95"
+        }
+      ],
+      "item_type": "G",
+      "classification": {
+        "code": "84713000",
+        "scheme": "HS"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Setup service",
+      "description": "On-site installation and setup",
+      "quantity": 6,
+      "unit_code": "HUR",
+      "unit_price": 150,
+      "category": "S",
+      "item_type": "S",
+      "service_code": "998313"
+    }
+  ],
+  "allowances": [
+    {
+      "amount": 200,
+      "reason": "Loyalty rebate",
+      "reason_code": "100",
+      "category": "S",
+      "rate": 5
+    }
+  ],
+  "charges": [
+    {
+      "amount": 75,
+      "reason": "Delivery",
+      "reason_code": "DL",
+      "category": "S",
+      "rate": 5
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+    "name": "zainidevelopers/pint-ae",
+    "description": "Generate and validate UAE e-invoices (PINT AE / Peppol UBL 2.1) in plain PHP — no dependencies.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["uae", "e-invoicing", "einvoice", "pint-ae", "peppol", "ubl", "fta", "vat", "invoice", "xml"],
+    "homepage": "https://github.com/sahilzaini2007-pixel/pint-ae",
+    "authors": [
+        { "name": "Sahil Zaini", "email": "info@zainidevelopers.com", "homepage": "https://zainidevelopers.com", "role": "Developer" }
+    ],
+    "require": {
+        "php": ">=8.1",
+        "ext-dom": "*",
+        "ext-libxml": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": { "PintAE\\": "src/" }
+    },
+    "bin": ["bin/pint-ae"],
+    "scripts": {
+        "test": "php tests/run.php"
+    },
+    "support": {
+        "issues": "https://github.com/sahilzaini2007-pixel/pint-ae/issues",
+        "source": "https://github.com/sahilzaini2007-pixel/pint-ae"
+    },
+    "minimum-stability": "stable"
+}
